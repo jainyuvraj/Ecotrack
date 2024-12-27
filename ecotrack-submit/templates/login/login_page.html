@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href={% static "css/login_page_c.css" %} />
+  </head>
+  <body>
+    <!-- ye hai  particles background wale -->
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="screen-1">
+
+      <!-- yaha aaye ga mera photo -->
+      <img class="logo" src="{% static "images/logo.png" %}" alt="Logo" />
+      <form action="" method="POST">
+        {% csrf_token %}
+        {% if error_message %}
+          <div align="center" style="color: red;">
+            <h2>
+              {{ error_message }}
+            </h2>
+          </div>
+        {% endif %}
+      <!-- pehli input field -->
+      <div class="email">
+        <label for="username">UserName</label>
+        <div class="sec-2">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="text" id="username" name="username" placeholder="Enter your username" />
+        </div>
+      </div>
+      <!-- dusri input field -->
+      <div class="password">
+        <label for="password">Password</label>
+        <div class="sec-2">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input
+            class="pas"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="············"
+          />
+          <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+        </div>
+      </div>
+      <!-- login ka butten -->
+      <button type="submit" class="login">Login</button>
+      </form>
+
+      <div class="footer">
+        <a href="/sign_up"> <span>Sign up</span></a>
+        <a href="logindex"><span>home</span></a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,184 @@
+/* General styles for consistent appearance */
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #064f02, #2ee88b);
+  background-size: 400% 400%;
+  animation: gradientBackground 10s ease infinite;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* background mai glow  */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.screen-1 {
+  background-color: #fffbe6;
+  padding: 2rem;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* logo ki design */
+.logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* input box ki design */
+.email,
+.password {
+  background-color: #fff;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 20px;
+  color: hsl(0, 0%, 30%);
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email:hover,
+.password:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
+}
+
+.email input,
+.password input {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 0%);
+}
+
+.email input::placeholder,
+.password input::placeholder {
+  color: hsl(0, 0%, 50%);
+  font-size: 0.9rem;
+}
+
+ion-icon {
+  color: hsl(0, 0%, 30%);
+  margin-right: 0.5rem;
+}
+
+.show-hide {
+  cursor: pointer;
+}
+
+/* butten  ki piccher */
+button.login {
+  background-color: hsl(140, 98%, 50%);
+  color: #111009;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+button.login:hover {
+  background-color: hsl(120, 94%, 21%);
+  transform: scale(1.05);
+}
+
+/* sing up wale ki piccher */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 37%);
+  width: 100%;
+}
+
+.footer span {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer span:hover {
+  color: hsl(101, 93%, 21%);
+}
+
+/* white glowing particle  */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.glow {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: float 3s ease-in-out infinite;
+  z-index: 1; /* Behind the form */
+}
+
+.glow:nth-child(2) {
+  left: 15%;
+  top: 20%;
+  animation-duration: 4s;
+  width: 25px;
+  height: 25px;
+}
+
+.glow:nth-child(3) {
+  right: 10%;
+  top: 40%;
+  animation-duration: 5s;
+  width: 10px;
+  height: 10px;
+}
+
+.glow:nth-child(4) {
+  left: 50%;
+  bottom: 10%;
+  animation-duration: 6s;
+  width: 20px;
+  height: 20px;
+}

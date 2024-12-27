@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Feedback Form</title>
+    {% csrf_token %}
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: linear-gradient(45deg, #1a1a2e, #16213e);
+      }
+
+      .feedback-container {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          padding: 2rem;
+          border-radius: 20px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+          width: 90%;
+          max-width: 600px;
+          color: white;
+      }
+
+      .feedback-container h2 {
+          text-align: center;
+          margin-bottom: 2rem;
+          color: #00ff88;
+          text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      }
+
+      .rating-container {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin: 2rem 0;
+      }
+
+      .star {
+          font-size: 3rem;
+          cursor: pointer;
+          transition: transform 0.2s, color 0.2s;
+          color: #ccc;
+      }
+
+      .star:hover {
+          transform: scale(1.2);
+      }
+
+      .star.active {
+          color: #ffd700;
+          animation: pulse 0.5s ease-in-out;
+      }
+
+      @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.3); }
+          100% { transform: scale(1); }
+      }
+
+      .form-group {
+          margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: #00ff88;
+      }
+
+      .form-group input,
+      .form-group textarea {
+          width: 100%;
+          padding: 0.8rem;
+          border: none;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+          outline: none;
+          background: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      }
+
+      button {
+          width: 100%;
+          padding: 1rem;
+          border: none;
+          border-radius: 10px;
+          background: #00ff88;
+          color: #1a1a2e;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+
+      button:hover {
+          background: #00cc6a;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+      }
+
+      .feedback-message {
+          text-align: center;
+          margin-top: 1rem;
+          color: #00ff88;
+          display: none;
+      }
+  </style>
+</head>
+<body>
+    <!-- Your existing HTML remains the same until the script section -->
+    <div class="feedback-container">
+      <h2>Share Your Feedback</h2>
+      <form id="feedbackForm">
+          <div class="rating-container">
+              <span class="star" data-rating="1">★</span>
+              <span class="star" data-rating="2">★</span>
+              <span class="star" data-rating="3">★</span>
+              <span class="star" data-rating="4">★</span>
+              <span class="star" data-rating="5">★</span>
+          </div>
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+              <label for="feedback">Your Feedback</label>
+              <textarea id="feedback" rows="4" required></textarea>
+          </div>
+          <button type="submit">Submit Feedback</button>
+      </form>
+      <div class="feedback-message" id="feedbackMessage">
+          Thank you for your feedback!
+      </div>
+  </div>
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const form = document.getElementById('feedbackForm');
+        const feedbackMessage = document.getElementById('feedbackMessage');
+        let currentRating = 0;
+
+        // Your existing star rating code remains the same...
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                const rating = this.dataset.rating;
+                highlightStars(rating);
+            });
+
+            star.addEventListener('mouseout', function() {
+                highlightStars(currentRating);
+            });
+
+            star.addEventListener('click', function() {
+                currentRating = this.dataset.rating;
+                highlightStars(currentRating);
+                
+                // Add animation effect
+                stars.forEach(s => {
+                    if (s.dataset.rating <= currentRating) {
+                        s.style.animation = 'none';
+                        s.offsetHeight; // Trigger reflow
+                        s.style.animation = 'pulse 0.5s ease-in-out';
+                    }
+                });
+            });
+        });
+
+        function highlightStars(rating) {
+            stars.forEach(star => {
+                const starRating = star.dataset.rating;
+                if (starRating <= rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+        // Modified form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (currentRating === 0) {
+                alert('Please select a rating');
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                rating: currentRating,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                feedback: document.getElementById('feedback').value
+            };
+
+            try {
+                const response = await fetch('/submit/', {  // Update this URL according to your Django URL configuration
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Show success message
+                    form.style.display = 'none';
+                    feedbackMessage.textContent = data.message;
+                    feedbackMessage.style.display = 'block';
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the feedback');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/Sign.css" %}" />
+  </head>
+  <body>
+    <div class="glow-balls">
+      <!-- Glow balls (optional) -->
+      <div class="glow-balls">
+        <div
+          class="glow-ball"
+          style="
+            background: #bbe4e9;
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 20%;
+            animation-duration: 8s;
+          "
+        ></div>
+        <div
+          class="glow-ball"
+          style="
+            background: #79c2d0;
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 10%;
+            animation-duration: 10s;
+          "
+        ></div>
+        <div
+          class="glow-ball"
+          style="
+            background: #53a8b6;
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 15%;
+            animation-duration: 9s;
+          "
+        ></div>
+        <div
+          class="glow-ball"
+          style="
+            background: #5585b5;
+            width: 120px;
+            height: 120px;
+            bottom: 5%;
+            right: 20%;
+            animation-duration: 7s;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div class="screen-1">
+      <div class="logo">
+        <img src="{% static "images/logo.png" %}" alt="Logo" />
+      </div>
+      <form action="" method="POST">
+        {% csrf_token %}
+        {% if error_message %}
+                    <div align="center" style="color: red;">
+                        <h2>
+                            {{ error_message }}
+                        </h2>
+                    </div>
+                {% endif %}
+
+      <div class="name">
+        <label for="name">Name</label>
+        <div class="sec-2">
+          <ion-icon name="person-outline"></ion-icon>
+          <input type="text" id="name" name="name" placeholder="" />
+        </div>
+      </div>
+
+      <div class="email">
+        <label for="email">Email Address</label>
+        <div class="sec-2">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" id="email"  name="email" placeholder="" />
+        </div>
+      </div>
+
+      <div class="password">
+        <label for="password">Password</label>
+        <div class="sec-2">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" id="password" name="password" placeholder="" />
+          <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="confirm-password">
+        <label for="repeatPassword">Confirm Password</label>
+        <div class="sec-2">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" id="repeatPassword" name="repeatPassword" placeholder="" />
+          <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+        </div>
+      </div>
+
+      <button type="submit" class="login">sign in</button>
+      </form>
+
+      <div class="footer">
+        <a href="login"> <span>login</span> </a>
+        <span>Forgot Password?</span>
+      </div>
+    </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  const passwordField = document.getElementById("password");
+  const confirmPasswordField = document.getElementById("repeatPassword");
+
+  form.addEventListener("submit", function (event) {
+    const password = passwordField.value;
+    const confirmPassword = confirmPasswordField.value;
+
+const hasLowercase = /[a-z]/.test(password);
+const hasUppercase = /[A-Z]/.test(password);
+
+const hasSpecialChar = /[@$!%?&]/.test(password);
+const isLongEnough = password.length >= 8;
+const e = False;
+
+if (!hasLowercase || !hasUppercase || !hasNumber || !hasSpecialChar || !isLongEnough) {
+  errorMessage = "Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and a special character.";
+  e = True;
+}
+     else if (password !== confirmPassword) {
+      errorMessage = "Passwords do not match.";
+      e = True
+    }
+
+    if (e) {
+      event.preventDefault(); // Prevent form submission
+      alert(errorMessage); // Display error to the user
+    }
+  });
+});
+  </script>
+  </body>
+</html>

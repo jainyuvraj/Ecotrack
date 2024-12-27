@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard - Waste Reporting</title>
+    <style>
+      /* General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .dashboard-container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        background-color: #2c3e50;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile {
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+      .sidebar nav ul {
+        list-style: none;
+        padding-top: 20px;
+      }
+
+      .sidebar nav ul li {
+        margin: 15px 0;
+      }
+
+      .sidebar nav ul li a {
+        color: #ecf0f1;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .sidebar nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      section {
+        margin-bottom: 40px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      table th,
+      table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form label,
+      form input,
+      form textarea {
+        margin-bottom: 10px;
+      }
+
+      form input,
+      form textarea {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      form button {
+        width: 150px;
+        align-self: flex-start;
+        padding: 10px;
+        background-color: #2ecc71;
+        border-radius: 5px;
+      }
+
+      form button:hover {
+        background-color: #27ae60;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="profile">
+          
+          <h2>{{request.user}}</h2>
+          <p>{{request.user.email}}</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="logindex">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="/report">Report New Waste</a></li>
+            
+            <li><a href="logout">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1>Dashboard</h1>
+
+        <!-- Waste Report History -->
+        <section class="history">
+          <h2>Waste Report History</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Report Description</th>
+                <th>Location</th>
+                <th>Submission On</th>
+                <th>Image</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            {% if reports %}
+            {% for report in reports %}
+              <tr>
+                <td>{{ report.description }}</td>
+                <td>LONG:{{report.longitude}} LAT:{{report.latitude}}</td>
+                <td>{{report.submitted_at}}</td>
+                <td><img src='{{report.image.url}}' alt='Waste Report image'  height="50px" width="50px"></td>
+<!--                <td>N.A.</td>-->
+                
+              </tr>
+            {% endfor %}
+            {% else %}
+            <p>You haven't submitted any reports yet.</p>
+            {% endif %}
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Current Report Status -->
+        
+
+        <!-- Notifications and Alerts -->
+        <section class="notifications">
+          <h2>Notifications</h2>
+          <ul>
+            
+          </ul>
+        </section>
+
+     
+    </div>
+  </body>
+</html>

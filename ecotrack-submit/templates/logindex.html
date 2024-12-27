@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecotrack</title>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+    <link
+      rel="stylesheet"
+      href=" https://fonts.googleapis.com/css?family=Tangerine"
+    />
+
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+
+        <h1>Ecotrack</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+      <!-- Add particles inside the header -->
+      <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </header>
+    <div class="background-image">
+      <img id="mainImage" src="{% static 'images/main_photo.jpg' %}" alt="Background" />
+    </div>
+
+    <div class="main-text">
+      <h1>Let's bring cleanliness together...</h1>
+
+      <img src="{% static 'images/truck.png' %}" alt="Cleanliness" class="animate-image" />
+    </div>
+    <div class="content"></div>
+
+    <!-- Features Section -->
+    <div id="features" class="features">
+      <div class="feature-item">
+        <a href="/report">
+          <img src="{% static 'images/reportlogo.jpg' %}" alt="Report Waste" />
+          <p>Report Waste</p>
+        </a>
+      </div>
+      <div class="feature-item">
+        <a href="/user_dashboard">
+          <img src="{% static 'images/dashlogo.jpg' %}" alt="Track Waste Status" />
+          <p>Dashboard</p>
+        </a>
+      </div>
+      <div class="feature-item">
+        <a href="/feedback">
+          <img src="{% static 'images/feedlogo.jpg' %}" alt="Feedback Form" />
+          <p>Feedback Form</p>
+        </a>
+      </div>
+      <div class="feature-item">
+        <a href="/chatbot">
+          <img src="{% static 'images/chatbotimage.png' %}" alt="Tips" />
+          <p>ChatBot</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- New About Section -->
+    <div id="about" class="about-section">
+      <div class="about-left">
+        <img src="{% static 'images/about2.png' %}" alt="About Image" />
+      </div>
+      <div class="about-right">
+        <h2>About Us</h2>
+        <p>
+          Welcome to Eco Track! We are a dedicated platform focused on promoting
+          sustainable waste management and raising environmental awareness. Our
+          mission is to offer innovative and effective solutions for waste
+          reporting and management, empowering individuals and communities to
+          make eco-friendly choices.
+        </p>
+        <p>
+          At Eco Track, we believe that every person has a vital role to play in
+          protecting our planet. Our platform provides tools for tracking waste,
+          information on various types of waste, and educational resources to
+          help users make informed decisions regarding waste disposal and
+          recycling. Together, we can strive for a cleaner, greener future.
+        </p>
+        <p>
+          We are committed to enhancing user experience and continuously
+          expanding our services to meet the evolving needs of our users and the
+          environment. Join us in making a positive impact on the world, one
+          responsible choice time.
+        </p>
+      </div>
+    </div>
+
+    <div id="contact" class="contact-section">
+      <div class="contact-left">
+        <h2>Contact Us</h2>
+        <h1>Get in Touch</h1>
+        <h3>We would love to hear from you!</h3>
+        <h3>Whether you have a question,</h3>
+        <h3>need support, or want to explore</h3>
+        <h3>partnership opportunities,</h3>
+        <h3>feel free to reach out.</h3>
+
+        <div id="detail">
+          <h1>Details</h1>
+          <ul>
+            <li>piwday main road 452020 , Indore (MP)</li>
+            <li>+91 8821821962</li>
+            <li>upkarsisodiya@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="contact-right">
+        <ul class="image-list">
+          <li>
+            <div class="image-container">
+              <img
+                src="{% static 'images/harry.jpg' %}"
+                alt="Contact Image 1"
+                height="10px"
+                width="10px"
+              />
+              <p class="description">Description for Image 1</p>
+            </div>
+          </li>
+          <li>
+            <div class="image-container">
+              <img
+                src="{% static 'images/harry.jpg' %}"
+                alt="Contact Image 2"
+                height="10px"
+                width="10px"
+              />
+              <p class="description">Description for Image 2</p>
+            </div>
+          </li>
+          <li>
+            <div class="image-container">
+              <img
+                src="{% static 'images/harry.jpg' %}"
+                alt="Contact Image 3"
+                height="10px"
+                width="10px"
+              />
+              <p class="description">Description for Image 3</p>
+            </div>
+          </li>
+          <li>
+            <div class="image-container">
+              <img
+                src="{% static 'images/harry.jpg' %}"
+                alt="Contact Image 4"
+                height="10px"
+                width="10px"
+              />
+              <p class="description">Description for Image 4</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section contact">
+          <h3>Contact Us</h3>
+          <p>piwday main road 452020, Indore (MP)</p>
+          <p>+91 8821821962</p>
+          <p>upkarsisodiya@gmail.com</p>
+        </div>
+        <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section social">
+          <h3>Follow Us</h3>
+          <ul class="social-icons">
+            <li>
+              <a href="#"><img src="" alt="Facebook" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="" alt="Twitter" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="" alt="Instagram" /></a>
+            </li>
+            <li>
+              <a href="logout"><img src="" alt="LinkedIn" /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Ecotrack. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/landingjava.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #064f02, #2ee88b);
+  animation: gradientBackground 10s ease infinite;
+  user-select: none;
+}
+
+/* Form Container */
+.screen-1 {
+  background: rgba(255, 255, 255, 0.8); /* Light background for contrast */
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em; /* Reduced gap */
+  border-radius: 15px; /* Slightly smaller border radius */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  max-width: 500px; /* Limit width */
+  width: 90%; /* Responsive width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Logo */
+.logo img {
+  width: 80px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Input Fields */
+.name,
+.email,
+.password,
+.confirm-password {
+  background: rgba(85, 133, 181, 0.1);
+  padding: 1em;
+  border-radius: 10px; /* Slightly smaller border radius */
+  transition: transform 0.3s ease;
+}
+
+.name:hover,
+.email:hover,
+.password:hover,
+.confirm-password:hover {
+  transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+input {
+  border: none; /* No border */
+  outline: none; /* No outline */
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding for input */
+  border-radius: 5px; /* Slightly rounded corners */
+}
+
+/* Button Styling */
+button.login {
+  padding: 1em;
+  background: #5585b5;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.login:hover {
+  background: #53a8b6;
+}
+
+/* Footer Links */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: #5585b5;
+  margin-top: 1em;
+}
+/* Add the styles directly for the glowing balls effect */
+.glow-ball {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
